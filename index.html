@@ -156,6 +156,21 @@
                 margin-bottom: 20px;
             }
         }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: light;
+            }
+
+            body {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+
+            .container, .card, input, select, textarea {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+        }
     </style>
 </head>
 <body>
