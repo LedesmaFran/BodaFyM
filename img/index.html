@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Fran y Michu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff9aab;
+            --secondary-color: #FFE4E1;
+            --text-color: #333;
+            --background-color: #FFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            background-image: url('img/background.jpg');
+            background-repeat: repeat;
+            background-size: 300px;
+            color: var(--text-color);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: var(--secondary-color);
+            margin-bottom: 40px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: var(--text-color);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .location img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .map {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #FF69B4;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .countdown {
+                flex-wrap: wrap;
+            }
+            .countdown-item {
+                flex-basis: 50%;
+                margin-bottom: 20px;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: light;
+            }
+
+            body {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+
+            .container, .card, input, select, textarea {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fran & Michu</h1>
+            <p class="subtitle">¡Nos casamos!</p>
+        </header>
+
+        <section class="section card">
+            <h2>Guarda la Fecha</h2>
+            <p>1 de marzo de 2025</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-value">00</span>
+                    <p>Días</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-value">00</span>
+                    <p>Horas</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-value">00</span>
+                    <p>Minutos</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-value">00</span>
+                    <p>Segundos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section locations">
+            <div class="location card">
+                <h3>Ceremonia</h3>
+                <p>Iglesia La Salle Florida</p>
+                <p>Pres. Hipólito Yrigoyen 2599, B1602DLD Florida, Provincia de Buenos Aires</p>
+                <p><strong>10:00 AM</strong></p>
+                <img src="img\iglesia.jpg" alt="Iglesia La Salle Florida" />
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.0372267919183!2d-58.49924920000003!3d-34.5272848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb12e78ad9d01%3A0xf32e159365b3e8eb!2sInstituto%20La%20Salle%20Florida!5e0!3m2!1ses-419!2sar!4v1729550960490!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="location card">
+                <h3>Salon</h3>
+                <p>Quincho Bayer</p>
+                <p>Julián Segundo Agüero 2530, B1605 Munro, Provincia de Buenos Aires</p>
+                <p><strong>1:00 PM</strong></p>
+                <img src="img\salon.jpg" alt="Bayer Venue" />
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422.9309133065179!2d-58.51388887905196!3d-34.52500637347731!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb1004146ce3b%3A0xae0d000ed4e2a9ff!2sQuincho%20Bayer!5e0!3m2!1ses-419!2sar!4v1729550835382!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="section card">
+            <h2>RSVP</h2>
+            <p>Por favor, confirma tu asistencia:</p>
+            <form id="rsvp-form">
+                <input type="text" name="name" placeholder="Nombre completo" required />
+                <input type="email" name="email" placeholder="Correo electrónico" required />
+                <select name="attending" required>
+                    <option value="">¿Asistirás?</option>
+                    <option value="yes">Sí, asistiré</option>
+                    <option value="no">No puedo asistir</option>
+                </select>
+                <input type="number" name="guests" min="1" max="5" placeholder="Número de invitados" />
+                <textarea name="special-requests" placeholder="Solicitudes especiales (requisitos dietéticos, etc.)"></textarea>
+                <button type="submit" class="button">Enviar RSVP</button>
+            </form>
+        </section>
+
+        <section class="section card">
+            <h2>Opciones de Regalo y Pago</h2>
+            <p>Por favor, elige tu opción de regalo y realiza el pago correspondiente:</p>
+            <form id="payment-form">
+                <select name="gift-option" required>
+                    <option value="">Elige tu opción de regalo</option>
+                    <option value="dinner">Solo cena - $20 USD</option>
+                    <option value="disney">Cena + Entrada a Disney - $90 USD</option>
+                    <option value="museum">Cena + Entrada al museo - $40 USD</option>
+                </select>
+                <button type="submit" class="button">Proceder al Pago</button>
+            </form>
+        </section>
+
+        <section class="section card">
+            <h2>Detalles de Pago</h2>
+            <p>Por favor, realiza la transferencia del monto correspondiente a tu selección:</p>
+            <p><strong>Nombre de la cuenta:</strong> Boda de Fran & Michu</p>
+            <p><strong>Número de cuenta:</strong> 1234567890</p>
+            <p><strong>Banco:</strong> Banco de Bodas</p>
+            <p><strong>Código SWIFT:</strong> WEDDABC123</p>
+        </section>
+
+        <footer>
+            <p>¡Esperamos celebrar con ustedes!</p>
+            <p>Fran & Michu</p>
+        </footer>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date('2025-03-01T10:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            let message = 'Gracias por tu RSVP!\n\n';
+            for (let [key, value] of formData.entries()) {
+                message += `${key}: ${value}\n`;
+            }
+            alert(message);
+            console.log(Object.fromEntries(formData));
+        });
+
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            let message = 'Gracias por tu selección de regalo!\n\n';
+            for (let [key, value] of formData.entries()) {
+                message += `${key}: ${value}\n`;
+            }
+            alert(message);
+            console.log(Object.fromEntries(formData));
+        });
+    </script>
+</body>
+</html>
