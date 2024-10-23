@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda de Fran y Michu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #ff9aab;
-            --secondary-color: #FFE4E1;
+            --secondary-color: rgba(255, 228, 225, 0.8);
             --text-color: #333;
-            --background-color: #FFF;
+            --background-color: rgba(255, 255, 255, 0.9);
         }
 
         * {
@@ -21,28 +21,26 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            background-image: url('img/background.jpg');
-            background-repeat: repeat;
-            background-size: 300px;
             color: var(--text-color);
             line-height: 1.6;
-            text-align: center;
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         header {
             text-align: center;
-            padding: 50px 0;
-            background-color: var(--secondary-color);
-            margin-bottom: 40px;
+            padding: 40px 0;
+            background-color: var(--background-color);
+            border-radius: 15px;
+            margin-bottom: 20px;
         }
 
         h1, h2, h3 {
@@ -51,46 +49,46 @@
 
         h1 {
             color: var(--primary-color);
-            font-size: 4em;
+            font-size: 2.5em;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: var(--text-color);
         }
 
-        .section {
-            margin-bottom: 60px;
-        }
-
         .card {
-            background-color: var(--secondary-color);
+            background-color: var(--background-color);
             border-radius: 15px;
-            padding: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
+        .card h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .countdown {
-            display: flex;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            text-align: center;
             margin-top: 20px;
         }
 
         .countdown-item {
-            text-align: center;
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .countdown-value {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: bold;
             color: var(--primary-color);
-        }
-
-        .locations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
         }
 
         .location img {
@@ -98,7 +96,20 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .location-details {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .location-details svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: var(--primary-color);
         }
 
         .map {
@@ -109,27 +120,13 @@
             margin-top: 15px;
         }
 
-        .button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .button:hover {
-            background-color: #FF69B4;
-        }
-
         form {
             display: grid;
             gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
         }
 
         input, select, textarea {
@@ -140,35 +137,47 @@
             font-size: 1em;
         }
 
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #FF69B4;
+        }
+
         footer {
             text-align: center;
             padding: 20px 0;
-            background-color: var(--secondary-color);
             margin-top: 40px;
+            background-color: var(--background-color);
+            border-radius: 15px;
         }
 
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
             .countdown {
-                flex-wrap: wrap;
-            }
-            .countdown-item {
-                flex-basis: 50%;
-                margin-bottom: 20px;
-            }
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                color-scheme: light;
+                grid-template-columns: repeat(4, 1fr);
             }
 
-            body {
-                background-color: var(--background-color);
-                color: var(--text-color);
-            }
-
-            .container, .card, input, select, textarea {
-                background-color: var(--background-color);
-                color: var(--text-color);
+            .locations {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
     </style>
@@ -180,9 +189,9 @@
             <p class="subtitle">¡Nos casamos!</p>
         </header>
 
-        <section class="section card">
-            <h2>Guarda la Fecha</h2>
-            <p>1 de marzo de 2025</p>
+        <section class="card">
+            <h2>Save the Date!</h2>
+            <p style="text-align: center;">1 de marzo de 2025</p>
             <div class="countdown">
                 <div class="countdown-item">
                     <span id="days" class="countdown-value">00</span>
@@ -203,68 +212,104 @@
             </div>
         </section>
 
-        <section class="section locations">
-            <div class="location card">
-                <h3>Ceremonia</h3>
-                <p>Iglesia La Salle Florida</p>
+        <div class="locations">
+            <section class="card location">
+                <h3 style="text-align: center;">Ceremonia</h3>
+                <img src="img/iglesia.jpg" alt="Iglesia La Salle Florida" />
+                <div class="location-details">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <p>Iglesia La Salle Florida</p>
+                </div>
                 <p>Pres. Hipólito Yrigoyen 2599, B1602DLD Florida, Provincia de Buenos Aires</p>
-                <p><strong>10:00 AM</strong></p>
-                <img src="img\iglesia.jpg" alt="Iglesia La Salle Florida" />
+                <div class="location-details">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <p><strong>10:30 AM</strong></p>
+                </div>
                 <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.0372267919183!2d-58.49924920000003!3d-34.5272848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb12e78ad9d01%3A0xf32e159365b3e8eb!2sInstituto%20La%20Salle%20Florida!5e0!3m2!1ses-419!2sar!4v1729550960490!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="location card">
-                <h3>Salon</h3>
-                <p>Quincho Bayer</p>
-                <p>Julián Segundo Agüero 2530, B1605 Munro, Provincia de Buenos Aires</p>
-                <p><strong>1:00 PM</strong></p>
-                <img src="img\salon.jpg" alt="Bayer Venue" />
-                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d422.9309133065179!2d-58.51388887905196!3d-34.52500637347731!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb1004146ce3b%3A0xae0d000ed4e2a9ff!2sQuincho%20Bayer!5e0!3m2!1ses-419!2sar!4v1729550835382!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </section>
+            </section>
 
-        <section class="section card">
+            <section class="card location">
+                <h3 style="text-align: center;">Salón</h3>
+                <img src="img/salon.jpg" alt="Bayer Venue" />
+                <div class="location-details">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <p>Quincho Bayer</p>
+                </div>
+                <p>Gdor. Marcelino Ugarte 3605, B1605 Munro, Provincia de Buenos Aires</p>
+                <div class="location-details">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <p><strong>12:00 PM</strong></p>
+                </div>
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d821.7832815939773!2d-58.514535030362126!3d-34.52485499831139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0d9faba61cd%3A0x954d075342135b92!2sGdor.%20Marcelino%20Ugarte%203605%2C%20B1605%20Munro%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1729641548240!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+            </section>
+        </div>
+
+        <section class="card">
             <h2>RSVP</h2>
             <p>Por favor, confirma tu asistencia:</p>
             <form id="rsvp-form">
-                <input type="text" name="name" placeholder="Nombre completo" required />
-                <input type="email" name="email" placeholder="Correo electrónico" required />
-                <select name="attending" required>
-                    <option value="">¿Asistirás?</option>
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="attending">¿Asistirás?</label>
+                <select id="attending" name="attending" required>
+                    <option value="">Selecciona una opción</option>
                     <option value="yes">Sí, asistiré</option>
                     <option value="no">No puedo asistir</option>
                 </select>
-                <input type="number" name="guests" min="1" max="5" placeholder="Número de invitados" />
-                <textarea name="special-requests" placeholder="Solicitudes especiales (requisitos dietéticos, etc.)"></textarea>
-                <button type="submit" class="button">Enviar RSVP</button>
+
+                <label for="guests">Número de invitados</label>
+                <input type="number" id="guests" name="guests" min="1" max="5">
+
+                <label for="special-requests">Solicitudes especiales</label>
+                <textarea id="special-requests" name="special-requests" placeholder="Requisitos dietéticos, etc."></textarea>
+
+                <button type="submit">Enviar RSVP</button>
             </form>
         </section>
 
-        <section class="section card">
+        <section class="card">
             <h2>Opciones de Regalo y Pago</h2>
             <p>Por favor, elige tu opción de regalo y realiza el pago correspondiente:</p>
             <form id="payment-form">
-                <select name="gift-option" required>
-                    <option value="">Elige tu opción de regalo</option>
+                <label for="gift-option">Elige tu opción de regalo</label>
+                <select id="gift-option" name="gift-option" required>
+                    <option value="">Selecciona una opción</option>
                     <option value="dinner">Solo cena - $20 USD</option>
                     <option value="disney">Cena + Entrada a Disney - $90 USD</option>
                     <option value="museum">Cena + Entrada al museo - $40 USD</option>
                 </select>
-                <button type="submit" class="button">Proceder al Pago</button>
+                <button type="submit">Proceder al Pago</button>
             </form>
         </section>
 
-        <section class="section card">
+        <section class="card">
             <h2>Detalles de Pago</h2>
             <p>Por favor, realiza la transferencia del monto correspondiente a tu selección:</p>
-            <p><strong>Nombre de la cuenta:</strong> Boda de Fran & Michu</p>
-            <p><strong>Número de cuenta:</strong> 1234567890</p>
-            <p><strong>Banco:</strong> Banco de Bodas</p>
-            <p><strong>Código SWIFT:</strong> WEDDABC123</p>
+            <div class="location-details">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                <p><strong>Nombre de la cuenta:</strong> Boda de Fran & Michu</p>
+            </div>
+            <div class="location-details">
+                <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15  0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06  0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                <p><strong>Número de cuenta:</strong> 1234567890</p>
+            </div>
+            <div class="location-details">
+                <svg viewBox="0 0 24 24"><path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg>
+                <p><strong>Banco:</strong> Banco de Bodas</p>
+            </div>
+            <div class="location-details">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <p><strong>Código SWIFT:</strong> WEDDABC123</p>
+            </div>
         </section>
 
         <footer>
             <p>¡Esperamos celebrar con ustedes!</p>
-            <p>Fran & Michu</p>
+            <p><strong>Fran & Michu</strong></p>
         </footer>
     </div>
 
