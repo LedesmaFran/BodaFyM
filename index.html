@@ -249,7 +249,7 @@
             <p>Por favor, confirma tu asistencia:</p>
 
 
-            <form id="rsvp-form" method="POST" action="https://script.google.com/macros/s/AKfycbypEg312i_zBtRxADfv-BdtzK0hGXmYkn-QD_b0LStFRHgzX5dMAV_i-yawtoKlTOkW/exec">
+            <form name="rsvp-form" id="rsvp-form">
                 <label for="Apellido">Apellido</label>
                 <input type="text" id="Apellido" required>
 
@@ -257,6 +257,17 @@
                 <input name="Name" type="text" placeholder="Name" required> -->
                 <button type="submit">Enviar</button>
             </form>
+            <script>
+                const scriptURL = "https://script.google.com/macros/s/AKfycbypEg312i_zBtRxADfv-BdtzK0hGXmYkn-QD_b0LStFRHgzX5dMAV_i-yawtoKlTOkW/exec"
+                const form = document.forms["rsvp-form"]
+    
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                        .then((response) => console.log("Success!", response))
+                        .catch((error) => console.error("Error!", error.message))
+                })
+            </script>
 
             <!-- <form id="rsvp-form">
                 <label for="name">Nombre completo</label>
