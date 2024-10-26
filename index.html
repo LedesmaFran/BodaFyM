@@ -247,7 +247,18 @@
         <section class="card">
             <h2>RSVP</h2>
             <p>Por favor, confirma tu asistencia:</p>
-            <form id="rsvp-form">
+
+
+            <form id="rsvp-form" method="POST" action="https://script.google.com/macros/s/AKfycbypEg312i_zBtRxADfv-BdtzK0hGXmYkn-QD_b0LStFRHgzX5dMAV_i-yawtoKlTOkW/exec">
+                <label for="Apellido">Apellido</label>
+                <input type="text" id="Apellido" required>
+
+                <!-- <input name="Email" type="email" placeholder="Email" required>
+                <input name="Name" type="text" placeholder="Name" required> -->
+                <button type="submit">Enviar</button>
+            </form>
+
+            <!-- <form id="rsvp-form">
                 <label for="name">Nombre completo</label>
                 <input type="text" id="name" name="name" required>
 
@@ -268,7 +279,7 @@
                 <textarea id="special-requests" name="special-requests" placeholder="Requisitos dietéticos, etc."></textarea>
 
                 <button type="submit">Enviar RSVP</button>
-            </form>
+            </form> -->
         </section>
 
         <section class="card">
