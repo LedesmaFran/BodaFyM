@@ -248,49 +248,72 @@
             <h2>RSVP</h2>
             <p>Por favor, confirma tu asistencia:</p>
 
-
             <form name="rsvp-form" id="rsvp-form">
-                <label for="Apellido">Apellido</label>
-                <input type="text" id="Apellido" required>
-
-                <!-- <input name="Email" type="email" placeholder="Email" required>
-                <input name="Name" type="text" placeholder="Name" required> -->
+                <label for="apellido">Apellido</label>
+                <input type="text" name="Apellido" id="apellido" required>
+            
+                <label for="nombre">Nombre/s</label>
+                <input type="text" name="Nombre" id="nombre" required>
+            
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="Email" id="email" required>
+            
+                <label for="dni">DNI</label>
+                <input type="number" name="DNI" id="dni" placeholder="12345678" required>
+            
+                <label for="auto">¿Vas a venir en auto?</label>
+                <select id="auto" name="Auto" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            
+                <div id="auto-info" style="display: none;">
+                    <label for="patente">Patente</label>
+                    <input type="text" name="Patente" id="patente" placeholder="AB123CD o ABC123">
+            
+                    <label for="modelo auto">Modelo Auto</label>
+                    <input type="text" name="Modelo Auto" id="modelo-auto" placeholder="Ford Fiesta">
+                </div>
+            
+                <label for="restriccion-alimenticia">¿Alguna restricción alimenticia?</label>
+                <select id="restriccion-alimenticia" name="Restriccion Alimenticia" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Ninguna">Ninguna</option>
+                    <option value="Celiaco">Celiac@</option>
+                    <option value="Vegetariano">Vegetarian@</option>
+                </select>
+                
                 <button type="submit">Enviar</button>
             </form>
+            
             <script>
-                const scriptURL = "https://script.google.com/macros/s/AKfycbypEg312i_zBtRxADfv-BdtzK0hGXmYkn-QD_b0LStFRHgzX5dMAV_i-yawtoKlTOkW/exec"
+                const autoSelect = document.getElementById("auto");
+                const autoInfoDiv = document.getElementById("auto-info");
+                autoSelect.addEventListener("change", function() {
+                    if (autoSelect.value === "Si") {
+                        autoInfoDiv.style.display = "block"; // Muestra los campos de patente y modelo
+                    } else {
+                        autoInfoDiv.style.display = "none"; // Oculta los campos de patente y modelo
+                    }
+                });
+            </script>
+                
+            <script>
+                const scriptURL = "https://script.google.com/macros/s/AKfycbxA87BKObvI9BE7qe-Vu-5PGo-uz409g_CC71QKWqENXiMQ8hTfT0XnWZzNzYnUfWs6/exec"
                 const form = document.forms["rsvp-form"]
-    
+                
                 form.addEventListener("submit", (e) => {
                     e.preventDefault()
-                    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                    const formData = new FormData(form)
+                    for (const [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`)
+                    }
+                    fetch(scriptURL, { method: "POST", body: formData })
                         .then((response) => console.log("Success!", response))
                         .catch((error) => console.error("Error!", error.message))
                 })
             </script>
-
-            <!-- <form id="rsvp-form">
-                <label for="name">Nombre completo</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="attending">¿Asistirás?</label>
-                <select id="attending" name="attending" required>
-                    <option value="">Selecciona una opción</option>
-                    <option value="yes">Sí, asistiré</option>
-                    <option value="no">No puedo asistir</option>
-                </select>
-
-                <label for="guests">Número de invitados</label>
-                <input type="number" id="guests" name="guests" min="1" max="5">
-
-                <label for="special-requests">Solicitudes especiales</label>
-                <textarea id="special-requests" name="special-requests" placeholder="Requisitos dietéticos, etc."></textarea>
-
-                <button type="submit">Enviar RSVP</button>
-            </form> -->
         </section>
 
         <section class="card">
