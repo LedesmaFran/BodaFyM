@@ -254,12 +254,12 @@
             
                 <label for="nombre">Nombre/s</label>
                 <input type="text" name="Nombre" id="nombre" required>
+                
+                <label for="dni">DNI</label>
+                <input type="number" name="DNI" id="dni" placeholder="12345678" required>
             
                 <label for="email">Correo electrónico</label>
                 <input type="email" name="Email" id="email" required>
-            
-                <label for="dni">DNI</label>
-                <input type="number" name="DNI" id="dni" placeholder="12345678" required>
             
                 <label for="auto">¿Vas a venir en auto?</label>
                 <select id="auto" name="Auto" required>
@@ -272,7 +272,7 @@
                     <label for="patente">Patente</label>
                     <input type="text" name="Patente" id="patente" placeholder="AB123CD o ABC123">
             
-                    <label for="modelo auto">Modelo Auto</label>
+                    <label for="modelo-auto">Modelo Auto</label>
                     <input type="text" name="Modelo Auto" id="modelo-auto" placeholder="Ford Fiesta">
                 </div>
             
@@ -283,21 +283,67 @@
                     <option value="Celiaco">Celiac@</option>
                     <option value="Vegetariano">Vegetarian@</option>
                 </select>
-                
+            
+                <label for="acompaniado">¿Vendrás con un acompañante?</label>
+                <select id="acompaniado" name="Acompaniado" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Si">Sí</option>
+                    <option value="No">No</option>
+                </select>
+            
+                <div id="acompaniado-info" style="display: none;">
+                    <h3>Información del Acompañante</h3>
+                    <label for="apellido-acompaniado">Apellido</label>
+                    <input type="text" name="Apellido Acompaniado" id="apellido-acompaniado">
+            
+                    <label for="nombre-acompaniado">Nombre/s</label>
+                    <input type="text" name="Nombre Acompaniado" id="nombre-acompaniado">
+            
+                    <label for="dni-acompaniado">DNI</label>
+                    <input type="number" name="DNI Acompaniado" id="dni-acompaniado" placeholder="87654321">
+            
+                    <label for="email-acompaniado">Correo electrónico</label>
+                    <input type="email" name="Email Acompaniado" id="email-acompaniado">
+            
+                    <label for="restriccion-acompaniado">¿Alguna restricción alimenticia del acompañante?</label>
+                    <select id="restriccion-acompaniado" name="Restriccion Alimenticia Acompaniado">
+                        <option value="">Selecciona una opción</option>
+                        <option value="Ninguna">Ninguna</option>
+                        <option value="Celiaco">Celiac@</option>
+                        <option value="Vegetariano">Vegetarian@</option>
+                    </select>
+                </div>
+            
                 <button type="submit">Enviar</button>
             </form>
             
+            
             <script>
-                const autoSelect = document.getElementById("auto");
-                const autoInfoDiv = document.getElementById("auto-info");
-                autoSelect.addEventListener("change", function() {
-                    if (autoSelect.value === "Si") {
-                        autoInfoDiv.style.display = "block"; // Muestra los campos de patente y modelo
-                    } else {
-                        autoInfoDiv.style.display = "none"; // Oculta los campos de patente y modelo
-                    }
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Mostrar u ocultar información del vehículo
+                    const autoSelect = document.getElementById("auto");
+                    const autoInfoDiv = document.getElementById("auto-info");
+                    autoSelect.addEventListener("change", function() {
+                        if (autoSelect.value === "Si") {
+                            autoInfoDiv.style.display = "block";
+                        } else {
+                            autoInfoDiv.style.display = "none";
+                        }
+                    });
+            
+                    // Mostrar u ocultar información del acompañante
+                    const acompaniadoSelect = document.getElementById("acompaniado");
+                    const acompaniadoInfoDiv = document.getElementById("acompaniado-info");
+                    acompaniadoSelect.addEventListener("change", function() {
+                        if (acompaniadoSelect.value === "Si") {
+                            acompaniadoInfoDiv.style.display = "block";
+                        } else {
+                            acompaniadoInfoDiv.style.display = "none";
+                        }
+                    });
                 });
             </script>
+            
                 
             <script>
                 const scriptURL = "https://script.google.com/macros/s/AKfycbxA87BKObvI9BE7qe-Vu-5PGo-uz409g_CC71QKWqENXiMQ8hTfT0XnWZzNzYnUfWs6/exec"
