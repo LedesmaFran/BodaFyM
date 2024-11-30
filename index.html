@@ -8,7 +8,7 @@
     <style>
         :root {
             --primary-color: #ff9aab;
-            --secondary-color: rgba(255, 228, 225, 0.8);
+            --secondary-color: #ffe4e1cc;
             --text-color: #333;
             --background-color: rgba(255, 255, 255, 0.9);
         }
@@ -39,8 +39,7 @@
             text-align: center;
             padding: 40px 0;
             background-color: var(--background-color);
-            border-radius: 15px;
-            margin-bottom: 20px;
+            border-radius: 0 0 15px 15px;
         }
 
         h1, h2, h3 {
@@ -180,27 +179,50 @@
                 gap: 20px;
             }
         }
-        .hero-image { /* Added CSS rule for hero image */
+
+        .hero-image {
             width: 100%;
             max-height: 1500px;
             object-fit: cover;
             border-radius: 15px 15px 0 0;
-            margin-bottom: -180px;
-            margin-top: -40px;
+            margin-bottom: -0px;
+            margin-top: -100px;
+        }
+
+        /* Updated CSS to adjust the icon within the circular container */
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .icon-container img {
+            width: 60%;
+            height: auto;
+            object-fit: contain;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="img/top_img.png" alt="Fran & Michu" class="hero-image">  <!-- Updated container opening -->
-            <!-- <h1>Fran & Michu</h1>
-            <p class="subtitle">¡Nos casamos!</p> -->
         </header>
+        <img src="img/top_img.png" alt="Fran & Michu" class="hero-image">  <!-- Updated container opening -->
 
         <section class="card">
             <!-- <h2>Save the Date!</h2> -->
-            <!-- <p style="text-align: center;">1 de marzo de 2025</p> -->
+            <h1 style="text-align: center;">Fran & Michu</h1>
+            <p style="text-align: center;" class="subtitle">¡Nos casamos!</p>
+            <h2 style="text-align: center; color: var(--primary-color);">1 de Marzo 2025</h2>
+            <p style="text-align: center;" class="subtitle">Después de muchas aventuras, risas y desafíos compartidos, ha llegado el momento de dar el "sí" definitivo.</p>
+            <p style="text-align: center;" class="subtitle">Nos encantaría contar con cada uno de ustedes para celebrar este día tan especial. ¡Será un evento lleno de amor, risas y memorias que queremos crear juntos!</p>
+            <p style="text-align: center;" class="subtitle" style="margin-bottom: 20px;">Y será tan solo en:</p>
             <div class="countdown">
                 <div class="countdown-item">
                     <span id="days" class="countdown-value">00</span>
@@ -217,6 +239,41 @@
                 <div class="countdown-item">
                     <span id="seconds" class="countdown-value">00</span>
                     <p>Segundos</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="card">
+            <h2 style="text-align: center; color: var(--primary-color);">Dress Code</h2>
+            <p style="text-align: center; font-size: 1.5em; color: #b8997d; font-family: 'Playfair Display', serif; margin-bottom: 2rem;">Formal</p>
+            
+            <div style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div class="icon-container">
+                        <img src="img/dress_code_men.jpg" alt="Dress code for men">
+                    </div>
+                    <h3 style="color: #b8997d; font-family: 'Playfair Display', serif;">Hombres</h3>
+                    <p>Traje Completo</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="icon-container">
+                        <img src="img/dress_code_woman.jpg" alt="Dress code for women">
+                    </div>
+                    <h3 style="color: #b8997d; font-family: 'Playfair Display', serif;">Mujer</h3>
+                    <p>Vestido Largo</p>
+                </div>
+            </div>
+            <div class="color-palette">
+                <h3 style="text-align: center; color: #b8997d; font-family: 'Playfair Display', serif;">Paleta de colores</h3>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                    <div style="width: 40px; height: 40px; background-color: #ffe4e1cc; border-radius: 50%;"></div>
+                    <div style="width: 40px; height: 40px; background-color: #e57373; border-radius: 50%;"></div>
+                    <div style="width: 40px; height: 40px; background-color: #b0bec5; border-radius: 50%;"></div>
+                    <div style="width: 40px; height: 40px; background-color: #81c784; border-radius: 50%;"></div>
+                    <div style="width: 40px; height: 40px; background-color: #000000; border-radius: 50%;"></div>
+                    <div style="width: 40px; height: 40px; background-color: #ffcc22; border-radius: 50%;"></div>
                 </div>
             </div>
         </section>
@@ -407,6 +464,17 @@
             </div>
         </section>
 
+
+<section class="card">
+    <h2 style="text-align: center; color: var(--primary-color);">Tips y Notas</h2>
+    <ul style="list-style-type: disc; padding-left: 1.5rem;">
+        <li style="margin-bottom: 10px;">Por favor ser puntuales, no queremos que se pierdan de ningún momento especial.</li>
+        <li style="margin-bottom: 10px;">La fiesta será solo de adultos.</li>
+        <li style="margin-bottom: 10px;">Tendremos nuestro fotógrafo, pero nos encantaría ver sus fotos, así que estaremos compartiendo un QR para no perdernos de nada.</li>
+        <li>Confirmar asistencia a la brevedad completando el formulario antes del 31/01, todos los datos son necesarios para poder ingresar al salón.</li>
+    </ul>
+</section>
+
         <footer>
             <p>¡Esperamos celebrar con ustedes!</p>
             <p><strong>Fran & Michu</strong></p>
@@ -457,3 +525,4 @@
     </script>
 </body>
 </html>
+
