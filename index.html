@@ -513,7 +513,7 @@
             
                 
             <script>
-                const scriptURL = "https://script.google.com/macros/s/AKfycby935QSOUt0G3ukhoItiK-iilC-yPkdSlwfvBYhFh1GOybcNmF2GqrmgxeoxGnaqAJW/exec"
+                const scriptURL = "https://script.google.com/macros/s/AKfycbxiI5_j-cFzTRfkxlDG4Z9mcukFxuEB5B3rQXkggw8Cr31vgKQSJ8eYtbtVNBk8Spc/exec"
                 const form = document.forms["rsvp-form"]
                 
                 form.addEventListener("submit", (e) => {
@@ -606,10 +606,10 @@
         document.getElementById('rsvp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            let message = 'Gracias por tu RSVP!\n\n';
-            for (let [key, value] of formData.entries()) {
-                message += `${key}: ${value}\n`;
-            }
+            let message = 'Gracias por registrarte!\n\n';
+            // for (let [key, value] of formData.entries()) {
+            //     message += `${key}: ${value}\n`;
+            // }
             alert(message);
             console.log(Object.fromEntries(formData));
         });
